@@ -1,8 +1,112 @@
-body {
-    text-align: center;
+:root {
+  --bg: #e6f7ff;
+  --controls-gap: 20px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #111;
+}
+
+main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+h1 {
+  margin: 8px 0 12px;
+}
+
+.game-wrap {
+  display: inline-block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #bfe0c7; /* fallback */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Canvas default logical size is 360x576 (set in JS).
+   We will scale it via CSS so drawing coordinates stay stable. */
 #board {
-    /* background-color: green; */
-    background-image: url("./doodlejumpbg.png");
+  display: block;
+  width: 360px;  /* will be overridden by JS resize */
+  height: 576px; /* will be overridden by JS resize */
+  background-image: url("./doodlejumpbg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* HUD */
+#hud {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+#restartBtn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #666;
+  background: white;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Mobile controls (hidden on desktop) */
+.mobile-controls {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  gap: var(--controls-gap);
+  z-index: 10;
+}
+
+.control-btn {
+  width: 68px;
+  height: 68px;
+  font-size: 30px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* show mobile controls on small screens */
+@media (max-width: 600px) {
+  .mobile-controls {
+    display: flex;
+  }
+
+  #board {
+    border-radius: 8px;
+  }
+}
+
+/* helpful hint text */
+.hint {
+  margin-top: 10px;
+  color: #444;
+  font-size: 14px;
 }

@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport", content="width=device-width, initial-scale=1.0">
-        <title>Doodle Jump</title>
-        <link rel="stylesheet" href="doodlejump.css">
-        <script src="doodlejump.js"></script>
-    </head>
-    <body>
-        <canvas id="board"></canvas>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doodle Jump</title>
+    <link rel="stylesheet" href="doodlejump.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Doodle Jump</h1>
+      <div class="game-wrap">
+        <canvas id="board" aria-label="Doodle Jump game"></canvas>
+
+        <!-- mobile controls -->
+        <div id="controls" class="mobile-controls" aria-hidden="true">
+          <button id="leftBtn" class="control-btn" aria-label="Left">◀</button>
+          <button id="rightBtn" class="control-btn" aria-label="Right">▶</button>
+        </div>
+      </div>
+
+      <div id="hud">
+        <span id="scoreText">Score: <strong id="score">0</strong></span>
+        <button id="restartBtn" class="hidden">Restart</button>
+      </div>
+
+      <p class="hint">Use ← → or A/D on keyboard. On mobile use buttons or swipe.</p>
+    </main>
+
+    <script src="doodlejump.js"></script>
+  </body>
 </html>
+
